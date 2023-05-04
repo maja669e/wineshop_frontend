@@ -5,32 +5,31 @@
 }
 
 
-.wines-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 18rem));
-  justify-content: center;
-  gap: 2rem;
-
-}
-
-.card {
-  overflow: hidden;
-  box-shadow:0 2px 20px rgb(216, 210, 210);
-  border-radius: 0,9rem;
-  display: flex;
-  flex-direction:  column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: transform .2s;
-}
-
-.card_img {
-  height: 12rem;
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   width: 100%;
-  object-fit: cover;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.30);
 }
 
+.container:hover .overlay {
+  opacity: 1;
+}
 
-.card:hover{
-  transform: scale(1.08);
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

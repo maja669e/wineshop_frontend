@@ -2,10 +2,11 @@ import WineCard from './WineCard';
 import styled from 'styled-components'
 
 const Container = styled.div `
-padding: 100px;
+padding: 80px;
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between;
+justify-content: center;
+align-items: center;
 `
 
 const WineList = ({wines}) => {

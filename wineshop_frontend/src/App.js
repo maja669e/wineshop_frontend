@@ -1,67 +1,101 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Slider from './components/Slider';
 import WineList from './components/WineList';
-import {Routes, Route, Link} from 'react-router-dom'
-
-import './App.css';
 import WineDetails from './pages/WineDetails';
+import './App.css';
+
+
 
 const App = () => {
-    const [wines, setWines] = useState([]);
-    const [showWines, setShowWines] = useState(false);
-    const [searchInput, setSearchInput] = useState('');
- 
-    useEffect(() => {
-        fetch('http://localhost:5032/api/Wine')
-            .then((response) => response.json())
-            .then((apiWines) => {
-            setWines(apiWines);
-            setShowWines(true);
+  const [wines, setWines] = useState([]);
+  const [showWines, setShowWines] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [data, setData] = useState(null);
+
+/*useEffect(() => {
+    fetch('http://localhost:5032/api/Wine')
+      .then((response) => response.json())
+      .then((apiWines) => {
+        setWines(apiWines);
+        setShowWines(true);
+      });
+  }, []);*/
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5157/graphql', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: `query {
+            wines {
+              id
+              name
+              price
+              productGuid
+              description
+              image
             }
-            );
-    }, [])
+          }` }),
+        })
+        const result = await response.json();
+        setData(result.data);
+        console.log(result, "result")
+        console.log(data, "data")
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
-    const searchWinesHandler = (event) => {
-        const search = event.target.value.toLocaleLowerCase();
-        setSearchInput(search)
-      
-    }
 
-        const filteredWines =
-            wines
-            .filter((wine) => {
-                return wine
-                    .name
-                    .toLocaleLowerCase()
-                    .includes(searchInput)
-            })
+/*   const searchWinesHandler = (event) => {
+    const search = event.target.value.toLowerCase();
+    setSearchInput(search);
+  };
 
-        let renderWines = "Loading wines..."
+  const filteredWines = wines.filter((wine) =>
+    wine.name.toLowerCase().includes(searchInput)
+  );
 
-        if (showWines) {
-           renderWines =  <WineList wines={filteredWines}/>
-        }
-        return (
+  let renderWines = 'Loading wines...';
 
-            <div className="max-w-6xl mx-auto bg-slate-200">
-                <Navbar/>
-                <Slider/>
+  if (showWines) {
+    renderWines = <WineList wines={filteredWines} />;
+  }
+ 
+ */
+ 
 
-                <input
-                    type='search'
-                    placeholder="Search..."
-                    onChange={searchWinesHandler}/> 
-                    <Routes>
-                        <Route path="/" element={renderWines}/>
-                        <Route path="/api/Wine/:productGuid" element={<WineDetails/>}/>
-                    </Routes>
-                   
-        
-            </div>
-        );
-}
+
+  return (
+  <div className="max-w-6xl mx-auto bg-slate-200">
+        <Navbar />
+        <Slider />
+
+  {/*    <input
+          type="search"
+          placeholder="Search..."
+          onChange={searchWinesHandler}
+        />   */}
+
+    {data ? (
+    <WineList wines={data.wines} />
+        ) : (
+    <p>Loading...</p>
+        )}
+        <Routes>
+          {/* <Route path="/" element={renderWines} /> */}
+          {/* <Route path="/graphql/:productGuid" element={<WineDetails />} /> */}
+        </Routes>  
+     
+    </div>
+  );
+};
 
 export default App;
-

@@ -6,17 +6,18 @@ import {Badge} from '@material-ui/core';
 
 const Container = styled.div`
     height: 60px;
-    length: 100%;
-  
+    width: 100%;
+    top: 0;
+    position: sticky;
+    background-color: white;
+    z-index: 4;
 `
 const Wrapper = styled.div`
-    padding: 10px 20px;
+    padding: 15px 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 `
-
 
 const Left = styled.div`
     display: flex;
@@ -24,7 +25,6 @@ const Left = styled.div`
     flex: 1;
 
 `
-
 
 
 const Center = styled.div`
@@ -53,6 +53,7 @@ margin-left: 25px;
 `
 const Navbar = () => {
     return (
+     
         <Container>
             <Wrapper>
                 <Left>
@@ -71,6 +72,7 @@ const Navbar = () => {
                 
             </Wrapper>
         </Container>
+        
     )
 }
 

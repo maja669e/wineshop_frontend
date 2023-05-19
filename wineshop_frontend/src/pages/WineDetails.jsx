@@ -82,7 +82,7 @@ const WineDetails = () => {
 
     useEffect(() => {
         const getWine = async () => {
-            const result = await fetch(`http://localhost:5032/api/Wine/${params.productGuid}`);
+            const result = await fetch(`http://localhost:5157/graphql/${params.productGuid}`);
             const data = await result.json();
             console.log(data);
             setWine(data)

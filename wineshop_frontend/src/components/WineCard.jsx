@@ -70,16 +70,14 @@ font-size: 16px;
 
 const WineCard = ({wine}) => {
 
-    const {productGuid, id, name, price} = wine;
+    const {productGuid, id, name, price, image} = wine;
     return <div>
 
         <Container>
 
             <div className='container'>
-                <Link to={`api/Wine/${productGuid}`}><Image
-                    src="https://th.bing.com/th/id/OIP.r-UUXaEE4rjItdHf8vmKuwHaO_?pid=ImgDet&rs=1"/>
-
-              
+                <Link to={`graphql/${productGuid}`}><Image
+                    src="https://th.bing.com/th/id/OIP.r-UUXaEE4rjItdHf8vmKuwHaO_?pid=ImgDet&rs=1"></Image>
                 <div class="overlay">
                     <div class="text">View</div>
                 </div>
@@ -89,7 +87,7 @@ const WineCard = ({wine}) => {
 
             <Info>
                 <Title>
-                    {wine.name}
+                    {name}
                 </Title>
 
                 <Price>{price}$</Price>

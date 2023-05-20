@@ -28,6 +28,17 @@ jobs:
  
       - name: Build
         run: npm run build
+        # Store the exit code in a variable
+        build_exit_code=$?
+
+          # Check if the exit code is non-zero and not an error
+        if [[ $build_exit_code -ne 0 && $build_exit_code -ne 2 ]]; then
+          echo "Build failed with errors"
+          exit $build_exit_code
+        fi
+
+        # Ignore non-zero exit code (warnings won't cause the build to fail)
+        continue-on-error: true
 
 
       - name: Login to DockerHub

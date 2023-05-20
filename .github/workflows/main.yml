@@ -29,9 +29,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run
-        run: npm start
-
 
       - name: Login to DockerHub
         uses: docker/login-action@v1

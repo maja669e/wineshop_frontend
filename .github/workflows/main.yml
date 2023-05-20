@@ -50,6 +50,6 @@ jobs:
           # publish only if branch is `main`
           push: ${{ github.ref == 'refs/heads/main'}}
           # define at which tag should be docker image published
-          tags: nho96/productupdateservice:latest
+          tags: maja669e/wineshopfrontendservice:latest
           # path to Dockerfile
           file: ./Dockerfile

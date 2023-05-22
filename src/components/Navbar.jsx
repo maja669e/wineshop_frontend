@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components'
 import {Search, ShoppingCartOutlined} from '@material-ui/icons';
 import {Badge} from '@material-ui/core';
+import Cart from './Cart';
+import {Routes, Route, Link} from "react-router-dom";
 
 
 const Container = styled.div`
@@ -52,6 +54,7 @@ cursor: pointer;
 margin-left: 25px;
 `
 const Navbar = () => {
+
     return (
      
         <Container>
@@ -63,11 +66,13 @@ const Navbar = () => {
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem>
-                    <Badge badgeContent={4} color="primary" overlap="rectangular">
-                        <ShoppingCartOutlined color="action" />
+                    <MenuItem> 
 
-                        </Badge>
+                    <Badge badgeContent={4} color="primary" overlap="rectangular">
+              <Link to={`cart/123`}>
+                <ShoppingCartOutlined color="action" />
+              </Link>
+            </Badge>
                     </MenuItem>
                     </Right>
                 

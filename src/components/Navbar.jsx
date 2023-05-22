@@ -52,9 +52,8 @@ cursor: pointer;
 margin-left: 25px;
 `
 const Navbar = () => {
-
-    const handleLogin = async () => {
-        window.location.href = "http://localhost:8080/auth/google"
+    const handleLogin = () => {
+        window.location.href = "http://localhost:8080/auth/google";
     }
 
     return (
@@ -66,11 +65,11 @@ const Navbar = () => {
                 </Left>
                 <Center><Logo>FINE WINE</Logo></Center>
                 <Right>
-                    <div>
+                    <MenuItem>
                         <button onClick={handleLogin}>
                             Sign in
                         </button>
-                    </div>
+                    </MenuItem>
                     <MenuItem>
                         <Badge badgeContent={4} color="primary" overlap="rectangular">
                             <ShoppingCartOutlined color="action" />

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Slider from './components/Slider';
 import WineList from './components/WineList';
 import WineDetails from './pages/WineDetails';
+import Cart from './components/Cart'
 import './App.css';
 
 const App = () => {
@@ -12,14 +13,6 @@ const App = () => {
   const [searchInput, setSearchInput] = useState('');
   const [data, setData] = useState(null);
 
-/*useEffect(() => {
-    fetch('http://localhost:5032/api/Wine')
-      .then((response) => response.json())
-      .then((apiWines) => {
-        setWines(apiWines);
-        setShowWines(true);
-      });
-  }, []);*/
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,6 +78,7 @@ const App = () => {
     <p>Loading...</p>
         )}
         <Routes>
+        <Route path="/cart/123" element={<Cart/>} />
           {/* <Route path="/" element={renderWines} /> */}
           {/* <Route path="/graphql/:productGuid" element={<WineDetails />} /> */}
         </Routes>  

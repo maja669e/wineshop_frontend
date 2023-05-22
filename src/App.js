@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Slider from './components/Slider';
 import WineList from './components/WineList';
 import WineDetails from './pages/WineDetails';
 import './App.css';
-
-
 
 const App = () => {
   const [wines, setWines] = useState([]);
@@ -68,16 +66,13 @@ const App = () => {
   if (showWines) {
     renderWines = <WineList wines={filteredWines} />;
   }
- 
  */
- 
 
 
   return (
   <div className="max-w-6xl mx-auto bg-slate-200">
         <Navbar />
         <Slider />
-
   {/*    <input
           type="search"
           placeholder="Search..."

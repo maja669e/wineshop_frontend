@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import {Search, ShoppingCartOutlined} from '@material-ui/icons';
-import {Badge} from '@material-ui/core';
+import { Search, ShoppingCartOutlined } from '@material-ui/icons';
+import { Badge } from '@material-ui/core';
 
 
 const Container = styled.div`
@@ -52,28 +52,36 @@ cursor: pointer;
 margin-left: 25px;
 `
 const Navbar = () => {
+
+    const handleLogin = async () => {
+        window.location.href = "http://localhost:8080/auth/google"
+    }
+
     return (
-     
+
         <Container>
             <Wrapper>
                 <Left>
-                  
+
                 </Left>
                 <Center><Logo>FINE WINE</Logo></Center>
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
+                    <div>
+                        <button onClick={handleLogin}>
+                            Sign in
+                        </button>
+                    </div>
                     <MenuItem>
-                    <Badge badgeContent={4} color="primary" overlap="rectangular">
-                        <ShoppingCartOutlined color="action" />
+                        <Badge badgeContent={4} color="primary" overlap="rectangular">
+                            <ShoppingCartOutlined color="action" />
 
                         </Badge>
                     </MenuItem>
-                    </Right>
-                
+                </Right>
+
             </Wrapper>
         </Container>
-        
+
     )
 }
 

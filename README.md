@@ -1,7 +1,8 @@
 # wineshop_frontend
 This is the frontend for our wine shop. 
 
-To start application, cd into the following package "wineshop_frontend" and type npm start in terminal. 
+Before starting the application, make sure to install the necessary dependencies by running the command: "npm install --force" in the terminal.
+To start application npm start. 
 
 
 # Getting Started with Create React App

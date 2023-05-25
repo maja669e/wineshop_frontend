@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
@@ -52,8 +52,11 @@ cursor: pointer;
 margin-left: 25px;
 `
 const Navbar = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     const handleLogin = () => {
-        window.location.href = "http://localhost:8080/auth/google";
+        window.location.href = "http://wine-webshop.azurewebsites.net/auth/google";
+        setIsLoggedIn(true);
     }
 
     return (
@@ -66,9 +69,11 @@ const Navbar = () => {
                 <Center><Logo>FINE WINE</Logo></Center>
                 <Right>
                     <MenuItem>
-                        <button onClick={handleLogin}>
-                            Sign in
-                        </button>
+                        {!isLoggedIn && (
+                            <button onClick={handleLogin}>
+                                Sign in
+                            </button>
+                        )}
                     </MenuItem>
                     <MenuItem>
                         <Badge badgeContent={4} color="primary" overlap="rectangular">

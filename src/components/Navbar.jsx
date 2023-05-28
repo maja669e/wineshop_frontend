@@ -55,7 +55,7 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLogin = () => {
-        window.location.href = "https://wine-webshop.azurewebsites.net/auth/google";
+        window.location.href = "https://auth-clusterip-srv/auth/google";
         setIsLoggedIn(true);
     }
 

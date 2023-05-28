@@ -7,7 +7,7 @@ const Cart = () => {
   useEffect(() => {
     const getBasket = async () => {
       try {
-        const result = await fetch('http://wine-webshop.azurewebsites.net/api/basket/GetBasket/123');
+        const result = await fetch('https://basket-clusterip-srv/api/basket/GetBasket/123');
         const data = await result.json();
         console.log(data); // Check the fetched data in the console
         setBasket(data);
